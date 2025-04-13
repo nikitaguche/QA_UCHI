@@ -30,4 +30,11 @@ test.describe('Uchi.ru widget', () => {
 		
     });
 	
+    test('has correct title popular article #2', async () => {
+	
+	    await widgetPage.openWidget();
+		
+		expect(await widgetPage.getArticleTitle()).toEqual('Где найти награды ребенка?');
+	});
+	
 });

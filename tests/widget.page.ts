@@ -9,6 +9,7 @@ enum WidgetPageSelectors {
     ARTICLE_POPULAR_TITLE = '[class="popularTitle__8Pi-v"]',
     ARTICLE_POPULAR_LIST = '[class="articles__dgKpa"]',
     ARTICLE_POPULAR_LIST_ITEM = '[class="article__6zuSl"]',
+	ARTICLE_TITLE = '[class="title__-CRDN"]',
 }
 
 export class WidgetPage {
@@ -48,5 +49,13 @@ export class WidgetPage {
 
     getWidgetBody() {
         return this.page.locator(WidgetPage.selector.WIDGET_BODY);
+    }
+	
+	async getArticleTitle() {
+        const articles = await this.getPopularArticles();
+        if (articles.length >= 2) {
+            return articles[2].locator(WidgetPage.selector.ARTICLE_TITLE).textContent();
+        }
+        return null;
     }
 }
